@@ -6,24 +6,20 @@
 
 	// Show post title
 	echo '<h2 class="blog-post-title">';
-	/**********
-	** YOUR CODE HERE:
-	Print the title of the post (use the variable $row)
-	**********/
+	echo $row['title'];
 	echo'</h2>';
 
 	// Show post date and author
 	echo '<p class="blog-post-meta">';
+	$fecha = $row['date'];
+	echo $fecha->toDateTime()->format('l, d F Y');
 	/**********
 	** YOUR CODE HERE:
 	Print the date of the post (use the variable $row)
 	Format the date with this PHP method: toDateTime()->format('l, d F Y' )
 	**********/
 	echo ' by <a href="#">';
-	/**********
-	** YOUR CODE HERE:
-	Print the author of the post (use the variable $row)
-	Note that it is a hyperlink that does not point to anything. Do not change it.
-	**********/	
+	
+	echo $row['author'];
 	echo '</a></p>';
 ?>

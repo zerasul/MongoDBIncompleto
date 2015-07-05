@@ -4,6 +4,9 @@ include_once("connection.php");
 
 // Store in an array the (distinct) authors stored in the collection
 $authorArray = NULL;
+
+$authorArray = $collection->distinct("comments.author");
+
 /**********
 ** YOUR CODE HERE:
 Assign to $authorArray all the distinct authors of comments.
@@ -26,6 +29,9 @@ The link points to index.php with two parameters:
 * command =  showPostsCommentedByAuthor
 * author = the full name of the author
 **********/
-
+foreach($authorArray as $author)
+{
+ echo "<li><a href='index.php?command=showPostsCommentedByAuthor&author=$author'>$author</a></li>";
+}
 echo '</ol>';
 ?>

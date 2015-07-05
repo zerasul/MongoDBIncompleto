@@ -3,12 +3,7 @@
 include_once("connection.php");
 
 // find 5 posts
-$cursor = NULL;
-
-/**********
-** YOUR CODE HERE:
-Get from $collection five post documents
-**********/
+$cursor = $collection->find()->limit(5);
 
 // Show the found posts
 while ($row = $cursor->next()) {
@@ -16,11 +11,9 @@ while ($row = $cursor->next()) {
 	include("postHeader.php");
 
 	// Show the first 300 characters of the body post
-	/**********
-	** YOUR CODE HERE:
-	** Get the body of a post (use the variable $row)
-	Print the first 300 characters of the body (use the PHP substr() function)
-	**********/
+	
+	$text = substr($row['body'],0,300);
+	echo $text;
 
 	// Setup an hyperlink to obtain the full text of the post
 	// The hyperlink points to index.php with this two GET parameters:

@@ -14,5 +14,6 @@ The link points to index.php with two parameters:
 * command =  showPostsByTag
 * tag = the tag
 **********/
-
+foreach($row['tags'] as $tag)
+	echo "<a href=index.php?command=showPostsByTag&tag=$tag>$tag</a>, ";
 ?>

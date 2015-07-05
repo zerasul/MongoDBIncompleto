@@ -12,6 +12,11 @@ echo '<ul>';
 Iterate through the post (use the variable $row) and get the comments
 For each comment print only the first 100 characters (use the PHP substr() function)
 **********/
-
+foreach($row['comments'] as $comment)
+{
+  $textcomment = substr($comment['body'],0,100);
+  $cauthor=$comment['author'];
+  echo "<li>(<a href='index.php?command=showPostsCommentedByAuthor&author=$cauthor'>$cauthor</a>)$textcomment</li>";
+}
 echo '</ul>';
 ?>

@@ -2,18 +2,12 @@
 // Setup MongoDB connection
 $connection = NULL;
 
-/**********
-** YOUR CODE HERE:
-Assign to $connection the connection to MongoDB
-**********/
+$connection = new MongoClient();
 
 // Select the "posts" collection in the database "blog"
 
-$collection = NULL;
+$collection = $connection->ggvdblog->posts;
 
-/**********
-** YOUR CODE HERE:
-Assign to $collection the the "posts" collection of the database "blog"
-**********/
+
 
 ?>

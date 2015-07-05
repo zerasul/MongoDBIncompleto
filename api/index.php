@@ -6,6 +6,8 @@ $app = new \Phalcon\Mvc\Micro();
 $app->get('/', 'home');
 $app->get('/api', 'home');	
 
+$app->get('/api/id/{id}','getPostsById');
+$app->get('/api/tag/{tag},'getPostsByTag');
 /**********
 ** YOUR CODE HERE:
 Define the routes provided in the function home 
@@ -14,7 +16,15 @@ Define the routes provided in the function home
 $app->notFound('notFound');
 
 // Handlers
+function getPostsById($id)
+{
+  findById($id);
+}
 
+function getPostsByTag($tag)
+{
+ findByTag($tag);
+}
 // Show the use of the API
 function home() {
 
@@ -46,11 +56,8 @@ function findById ($id) {
 
 // Get the post
 	$cursor = NULL;
-	/**********
-	** YOUR CODE HERE:
-	Get from $collection the post matching with $objectId
-	Assign the results to $cursor
-	**********/
+	
+	$cursor = $collection->find(array("_id" => $objectId));
 
 	$row = $cursor->next();
 
@@ -64,6 +71,7 @@ function findByTag ($tag) {
 // Connect to the database 
 	include_once("../connection.php");
 
+$cursor = $collection->find(array("tags" => $tag));
 // Get the posts
 	/**********
 	** YOUR CODE HERE:
@@ -112,12 +120,11 @@ function addComment($id) {
 
 	// Obtain the data of the request
 	$requestData = json_decode($app->request->getRawBody());
-
+	$post= $collection->find(array("_id" => $objectId));
+	
+	$res = $collection->find(array(array("_id"=>$objectId),array("$addtoSet"=>$requestData)));
 	// Update the post adding the new comment passed on the request
-	/**********
-	** YOUR CODE HERE:
-	Update in $collection the post matching with $objectId adding (pushing) a new comment 
-	**********/
+	json_encode($res);
 }
 
 function notFound() {

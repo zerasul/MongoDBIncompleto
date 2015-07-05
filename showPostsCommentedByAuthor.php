@@ -18,7 +18,8 @@ while ($row = $cursor->next()) {
 	** Get the body of a post (use the variable $row)
 	Print the first 300 characters of the body (use the PHP substr() function)
 	**********/
-
+	$text = substr($row['body'],0,300);
+	echo $text;
 	// Setup an hyperlink to obtain the full text of the post
 	// The hyperlink points to index.php with this two GET parameters:
 	// command: 'showMore' 
